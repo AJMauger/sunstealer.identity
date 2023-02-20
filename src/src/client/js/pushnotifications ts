@@ -1,0 +1,22 @@
+/// <reference lib="webworker" />
+declare const self: ServiceWorkerGlobalScope
+export declare let client: Client | MessagePort | ServiceWorker | null;
+
+self.addEventListener("message", (event: ExtendableMessageEvent) => {
+  console.info(`self.addEventListener("message" ...`);
+  client = event.source;
+});
+
+self.addEventListener("push", (event: PushEvent) => {
+  console.info(`self.addEventListener("push", ${event.data} client: ${!!client}`);
+  // ajm: JSON.stringify({ payload: request.body.payload 
+  const payload = event.data?.json();
+  if (client) {
+    client.postMessage({ pushNotification: payload.payload });
+  }
+
+  console.info(`self.registration.showNotification(${payload.payload}`);
+  self.registration.showNotification(payload.title, {
+    body: payload.payload
+  });
+});

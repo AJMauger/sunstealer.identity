@@ -1,0 +1,26 @@
+@import "../App.css";
+
+
+table {
+  border-spacing: 0px;
+  table-layout: fixed;
+}
+
+td {
+  border: 1px var(--color-background-div) solid;
+  padding: 5px;
+  user-select: text;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+th {
+  background-color: var(--blue); 
+  border: 1px var(--color-background-div) solid;
+  padding: 5px;
+  user-select: none;
+}
+
+tr {
+  background-color: var(--color-background-modal);
+}
