@@ -1,0 +1,94 @@
+# kubectl apply -f deployment.yaml
+---
+#kind: StorageClass
+#apiVersion: storage.k8s.io/v1
+#metadata:
+#  name: sunstealer-identity
+#provisioner: kubernetes.io/no-provisioner
+#volumeBindingMode: WaitForFirstConsumer
+#---
+#apiVersion: v1
+#kind: PersistentVolume
+#metadata:
+#  labels:
+#    name: sunstealer-identity
+#  name: sunstealer-identity
+#spec:
+#  capacity:
+#    storage: 1Gi
+#  accessModes:
+#    - ReadWriteMany
+#  persistentVolumeReclaimPolicy: Retain
+#  storageClassName: sunstealer-identity
+#  local:
+#    path: /home/ajm/data
+#  nodeAffinity:
+#    required:
+#      nodeSelectorTerms:
+#        - matchExpressions:
+#            - key: kubernetes.io/hostname
+#              operator: In
+#              values:
+#                - ajmfco37-02.ajm.net
+#                - ajmfco37-03.ajm.net
+#---
+#kind: PersistentVolumeClaim
+#apiVersion: v1
+#metadata:
+#  name: sunstealer-identity
+#spec:
+#  accessModes:
+#    - ReadWriteMany
+#  storageClassName: sunstealer-identity
+#  resources:
+#    requests:
+#      storage: 1Gi
+#---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sunstealer-identity
+  labels:
+    app: sunstealer-identity
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sunstealer-identity
+  template:
+    metadata:
+      labels:
+        app: sunstealer-identity
+    spec:
+      imagePullSecrets:
+        - name: docker
+      containers:
+        - name: sunstealer-identity-container
+          image: ajmfco37-01.ajm.net:5000/sunstealer-identity:latest
+          env:
+          ports:
+            - containerPort: 32001
+              name: w3
+          #volumeMounts:
+          #  - name: sunstealer-identity
+          #    mountPath: "/home/ajm/data"
+#      volumes:
+#        - name: sunstealer-identity
+#          persistentVolumeClaim:
+#            claimName: sunstealer-identity
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: sunstealer-identity
+  name: sunstealer-identity
+spec:
+  ports:
+    - protocol: TCP
+      name: sunstealer-identity
+      nodePort: 32001 
+      port: 32001
+  selector:
+    app: sunstealer-identity
+  type: NodePort
