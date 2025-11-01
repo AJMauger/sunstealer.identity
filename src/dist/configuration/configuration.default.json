@@ -1,0 +1,39 @@
+{
+  "clients": [
+    {
+      "application_type": "web",
+      "client_id": "sunstealer_explorer",
+      "client_secret": "client_secret",
+      "grant_types": [
+        "authorization_code",
+        "refresh_token"
+      ],
+      "redirect_uris": [
+        "https://ajmfco42-01.ajm.net:31001/sunstealer-explorer-angular/oidc",
+        "https://ajmfco42-01.ajm.net:31001/sunstealer-explorer-react/oidc",
+        "https://ajmfco42-01.ajm.net:31010/oidc",
+        "http://ajmwin11-01.ajm.net:8080/oidc"
+      ],
+      "response_types": [
+        "code"
+      ],
+      "scope": "offline_access openid profile",
+      "token_endpoint_auth_method": "none"
+    }
+  ],
+  "host": "ajmfco42-01.ajm.net",
+  "identity": {
+    "interval_ms": 180000,
+    "uri": "https://ajmfco42-01.ajm.net:31001"
+  },
+  "ingress": "",
+  "log": {
+    "file_size": 10000,
+    "files": 10,
+    "level": 0,
+    "memory_size": 400
+  },
+  "mongodb": "mongodb://ajm:User%40Fdr42%2301@ajmfco42-01.ajm.net:32017/mongodb/?authSource=admin",
+  "port": 443,
+  "protocol": "https"
+}

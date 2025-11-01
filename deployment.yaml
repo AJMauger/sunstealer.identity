@@ -1,0 +1,41 @@
+# kubectl apply -f deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sunstealer-identity
+  namespace: ajm
+  labels:
+    app: sunstealer-identity
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sunstealer-identity
+  template:
+    metadata:
+      labels:
+        app: sunstealer-identity
+    spec:
+      imagePullSecrets:
+        - name: registry
+      containers:
+        - name: sunstealer-identity
+          image: ajmfco42-01.ajm.net:5000/sunstealer-identity:latest
+          env:
+          ports:
+            - containerPort: 8080
+              name: w3
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: sunstealer-identity
+  namespace: ajm
+spec:
+  selector:
+    app: sunstealer-identity
+  ports:
+    - protocol: TCP
+      nodePort: 31010
+      port: 443
+  type: NodePort

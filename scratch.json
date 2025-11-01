@@ -1,0 +1,62 @@
+: {
+    "authorization_endpoint": "https://ajmfco42-01.ajm.net:31001/sunstealer-identity/auth",
+    "claims_parameter_supported": false,
+    "claims_supported": [
+        "sub",
+        "profile",
+        "sid",
+        "auth_time",
+        "iss"
+    ],
+    "code_challenge_methods_supported": [
+        "S256"
+    ],
+    "end_session_endpoint": "https://ajmfco42-01.ajm.net:31001/sunstealer-identity/session/end",
+    "grant_types_supported": [
+        "implicit",
+        "authorization_code",
+        "refresh_token"
+    ],
+    "issuer": "https://ajmfco42-01.ajm.net:31001",
+    "jwks_uri": "https://ajmfco42-01.ajm.net:8080/sunstealer-identity/jwks",
+    "authorization_response_iss_parameter_supported": true,
+    "response_modes_supported": [
+        "form_post",
+        "fragment",
+        "query"
+    ],
+    "response_types_supported": [
+        "code id_token",
+        "code",
+        "id_token",
+        "none"
+    ],
+    "scopes_supported": [
+        "offline_access",
+        "openid",
+        "profile"
+    ],
+    "subject_types_supported": [
+        "public"
+    ],
+    "token_endpoint_auth_methods_supported": [
+        "none"
+    ],
+    "token_endpoint": "https://ajmfco42-01.ajm.net:31001/sunstealer-identity/token",
+    "id_token_signing_alg_values_supported": [
+        "ES256",
+        "PS256",
+        "RS256"
+    ],
+    "pushed_authorization_request_endpoint": "https://ajmfco42-01.ajm.net:31001/sunstealer-identity/request",
+    "request_uri_parameter_supported": false,
+    "userinfo_endpoint": "https://ajmfco42-01.ajm.net:31001/sunstealer-identity/me",
+    "dpop_signing_alg_values_supported": [
+        "ES256",
+        "Ed25519",
+        "EdDSA"
+    ],
+    "claim_types_supported": [
+        "normal"
+    ]
+}
