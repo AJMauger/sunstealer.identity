@@ -23,11 +23,11 @@ export const Authorization = (props: Props) => {
   });
 
   return (
-    <div style={{ height: "calc(100vh - 36px)", overflowY: "auto", width: "100vw" }}>
+    <div style={{ fontSize: 12, height: "calc(100vh - 36px)", overflowY: "auto", width: "100vw" }}>
       <table cellPadding={2} style={{ width: "99vw" }}>
         <thead>
           <tr style={{ height: 32 }}>
-            <th style={{ width: "100px" }}>Key</th>
+            <th style={{ width: "60px" }}>Key</th>
             <th style={{ width: "1000px" }}>Value</th>
           </tr>
         </thead>

@@ -34,7 +34,7 @@ export const Home = (props: Props) => {
   return (
     <div style={{ height: "calc(100vh - 36px)", overflowY: "auto", padding: 10}}>
       { _identity.state!=eOIDCFLOW.eSIGNEDIN && uri &&
-      <iframe ref={iframe} style={{ border: 1, overflow: "hidden" }} height="100%" width="100%" src={uri} 
+      <iframe ref={iframe} style={{ border: "none", overflow: "hidden", left: "40%", position: "absolute", top: 200 }} height="80%" width="60%" scrolling="no" src={uri} 
         onLoad={async () => {
           {_logger.LogDebug(`home.tsx uri: state: ${uri}`)}
           try {
@@ -64,7 +64,8 @@ export const Home = (props: Props) => {
   <div style={{overflow: "auto"}}>identity.codeVerifier: {_identity.codeVerifier}</div>
   <div style={{overflow: "auto"}}>identity.accessToken: {_identity.accessToken}</div>
 </pre>
-    <pre>
+
+    <pre style={{fontSize: 12}}>
       { _identity.discovery ? JSON.stringify(_identity.discovery, null, 2) : ""}
     </pre>
   </div>);
