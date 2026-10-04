@@ -111,11 +111,13 @@ export const GlobalHeader: React.FC<IProps> = (_props: IProps) => {
     return items;
   }
 
+  console.log(`UserInfo: ${JSON.stringify(_identity.userInfo, null, 2)}`);
+
   return (
     <div className="main-toolbar">
       <div style={{ alignItems: "center", display: "flex", flexDirection: "row", height: "100%", justifyContent: "center", paddingLeft: 20 }}>
         <div className="icon-menu main-toolbar-icon" onClick={() => SetMenu(true)} />
-        <div style={{ color: "var(--yellow)", padding: 10 }}>SUNSTEALER (OpenID Connect Relying Party)</div>
+        <div style={{ color: "yellow", fontSize: 16, padding: 10 }}>Sunstealer.Identity Admin (OpenID Connect Relying Party)</div>
       </div>
 
       <div style={{ alignItems: "center", display: "flex", flexDirection: "row", height: "100%", justifyContent: "center", paddingRight: 5 }}>
@@ -176,10 +178,10 @@ export const GlobalHeader: React.FC<IProps> = (_props: IProps) => {
 
         <div style={{ alignItems: "center", display: "flex", flexDirection: "column", height: "calc(100% - 70px)", justifyContent: "center", overflowY: "auto", width: "100%" }}>
           <div style={{ alignItems: "center", display: "flex", flexDirection: "row", height: 32, paddingLeft: 10, width: "calc(100% - 15px)" }}>
-            <div style={{ color: "gray", width: "50%" }}>User</div><div style={{ width: "50%" }}>{_identity.accessToken?.length === 43 ? _identity.userInfo?.profile?.name : _identity.userInfo?.payload?.profile?.name}</div>
+            <div style={{ color: "gray", width: "50%" }}>User</div><div style={{ width: "50%" }}>{_identity.accessToken?.length === 43 ? _identity.userInfo?.profile?.name : _identity.userInfo?.profile?.name}</div>
           </div>
           <div style={{ alignItems: "center", display: "flex", flexDirection: "row", height: 32, paddingLeft: 10, width: "calc(100% - 15px)" }}>
-            <div style={{ color: "gray", width: "50%" }}>Role</div><div style={{ width: "50%" }}>{_identity.accessToken?.length === 43 ? _identity.userInfo?.profile?.role : _identity.userInfo?.payload?.profile?.role}</div>
+            <div style={{ color: "gray", width: "50%" }}>Role</div><div style={{ width: "50%" }}>{_identity.accessToken?.length === 43 ? _identity.userInfo?.profile?.role : _identity.userInfo?.profile?.role}</div>
           </div>
           <hr style={{ border: "none", backgroundColor: "gray", height: 1, marginBottom: 10, marginTop: 10, width: "100%" }} />
           <div className="menu-option" style={{ display: _identity.state === eOIDCFLOW.eSIGNEDIN ? "none" : "" }} onClick={() => {
