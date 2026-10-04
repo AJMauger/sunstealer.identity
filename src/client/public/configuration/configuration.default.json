@@ -1,0 +1,39 @@
+{
+  "clients": [
+    {
+      "application_type": "web",
+      "client_id": "sunstealer_explorer",
+      "client_secret": "client_secret",
+      "grant_types": [
+        "authorization_code",
+        "refresh_token"
+      ],
+      "redirect_uris": [
+        "https://localhost:8080/sunstealer-explorer-platform/oidc",
+        "https://localhost:8080/sunstealer-explorer-react/oidc",
+        "https://localhost:8080/oidc",
+        "http://localhost:8080/oidc"
+      ],
+      "response_types": [
+        "code"
+      ],
+      "scope": "offline_access openid profile",
+      "token_endpoint_auth_method": "none"
+    }
+  ],
+  "host": "localhost",
+  "identity": {
+    "interval_ms": 180000,
+    "uri": "https://localhost:8080"
+  },
+  "ingress": "",
+  "log": {
+    "file_size": 10000,
+    "files": 10,
+    "level": 0,
+    "memory_size": 400
+  },
+  "mongodb": "mongodb://adam:password@localhost:27017/?authSource=admin",
+  "port": 8080,
+  "protocol": "http"
+}
